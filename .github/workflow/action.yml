@@ -1,0 +1,8 @@
+name: First workflow
+description: workflow_dispatch
+runs:
+  using: "composite"
+  steps:
+  - name: First step
+    run: echo "This is the first step of the first job of the first workflow"
+    shell: bash
