@@ -1,12 +1,13 @@
-name: 'First workflow'
-description: 'A simple action that prints Hello World and Done - bye!'
-inputs: {}
-runs:
-  using: "composite"
-  steps:
-  - name: First step
-    run: echo "Hello World"
-    shell: bash
-  - name: Second step
-    run: echo "Done - bye!"
-    shell: bash
+name: learn-github-actions
+run-name: ${{ github.actor }} is learning GitHub Actions
+on: [ push ]
+jobs:
+  check-bats-version:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v5
+    - uses: actions/setup-node@v4
+      with:
+        node-version: '20'
+    - run: npm install -g bats
+    - run: bats -v
